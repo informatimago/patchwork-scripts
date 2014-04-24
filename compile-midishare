@@ -7,12 +7,18 @@ cd "$(pwd -P)"
 
 ( 
     cd midishare/libraries/player/macosx 
+    rm -rf build/Deployment/Player.framework
     xcodebuild -project 'Player.xcodeproj' -target 'Player Universal' -configuration 'Deployment' \
         && ( rm -rf "${INSTDIR}"/Player.framework ; cp -a build/Deployment/Player.framework "${INSTDIR}"/Player.framework )
 )
 
 ( 
     cd midishare/src/macosx-mono
+    rm -rf build/Deployment/MidiShare.framework
     xcodebuild -project 'midishare.xcodeproj'  -target 'midishare' -configuration 'Deployment' \
         && ( rm -rf "${INSTDIR}"/MidiShare.framework ; cp -a build/Deployment/MidiShare.framework "${INSTDIR}"/MidiShare.framework )
 )
+
+open "${INSTDIR}"
+open /Library/Frameworks
+echo "Install the MidiShare.framework and the Player.framework to /Library/Frameworks"
