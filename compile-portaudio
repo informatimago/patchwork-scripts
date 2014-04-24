@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd "$(dirname "$0")/../portaudio/trunk"
+cd "$(pwd -P)"
+./configure --prefix=/usr/local
+make clean
+make
+sudo make install

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# We need to use gcc, not clang to compile ffigen4 (which includes a gcc).
+
+# sudo port install apple-gcc42
+
+cd "$(dirname "$0")/../ffigen4"
+cd "$(pwd -P)"
+make clean
+CC=/opt/local/bin/gcc-apple-4.2 make 

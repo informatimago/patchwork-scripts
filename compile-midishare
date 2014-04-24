@@ -1,0 +1,18 @@
+#!/bin/bash
+INSTDIR="${HOME}/Library/Frameworks"
+mkdir -p "${INSTDIR}"
+
+cd "$(dirname "$0")/.."
+cd "$(pwd -P)"
+
+( 
+    cd midishare/libraries/player/macosx 
+    xcodebuild -project 'Player.xcodeproj' -target 'Player Universal' -configuration 'Deployment' \
+        && ( rm -rf "${INSTDIR}"/Player.framework ; cp -a build/Deployment/Player.framework "${INSTDIR}"/Player.framework )
+)
+
+( 
+    cd midishare/src/macosx-mono
+    xcodebuild -project 'midishare.xcodeproj'  -target 'midishare' -configuration 'Deployment' \
+        && ( rm -rf "${INSTDIR}"/MidiShare.framework ; cp -a build/Deployment/MidiShare.framework "${INSTDIR}"/MidiShare.framework )
+)

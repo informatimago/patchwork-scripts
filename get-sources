@@ -1,0 +1,8 @@
+#!/bin/bash
+cd "$(dirname "$0")/../"
+cd "$(pwd -P)"
+svn co http://svn.clozure.com/publicsvn/ffigen4/branches/ffigen-apple-gcc-5646/ffigen4
+svn co https://subversion.assembla.com/svn/portaudio/portaudio/trunk portaudio
+git clone git@gitorious.org:patchwork/midishare.git
+git clone git@gitorious.org:patchwork/mclgui.git
+git clone git@gitorious.org:patchwork/patchwork.git
