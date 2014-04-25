@@ -1,0 +1,5 @@
+#!/bin/bash
+cd "$(dirname "$0")/../patchwork/"
+cd "$(pwd -P)"
+make -C src/macosx icons headers interfaces 
+make application

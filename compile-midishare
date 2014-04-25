@@ -1,24 +1,21 @@
 #!/bin/bash
-INSTDIR="${HOME}/Library/Frameworks"
-mkdir -p "${INSTDIR}"
+INSTDIR="/Library/Frameworks"
+# mkdir -p "${INSTDIR}"
 
 cd "$(dirname "$0")/.."
 cd "$(pwd -P)"
 
 ( 
-    cd midishare/libraries/player/macosx 
-    rm -rf build/Deployment/Player.framework
-    xcodebuild -project 'Player.xcodeproj' -target 'Player Universal' -configuration 'Deployment' \
-        && ( rm -rf "${INSTDIR}"/Player.framework ; cp -a build/Deployment/Player.framework "${INSTDIR}"/Player.framework )
-)
-
-( 
     cd midishare/src/macosx-mono
     rm -rf build/Deployment/MidiShare.framework
     xcodebuild -project 'midishare.xcodeproj'  -target 'midishare' -configuration 'Deployment' \
-        && ( rm -rf "${INSTDIR}"/MidiShare.framework ; cp -a build/Deployment/MidiShare.framework "${INSTDIR}"/MidiShare.framework )
+        && ( sudo rm -rf "${INSTDIR}"/MidiShare.framework \
+             && sudo cp -a build/Deployment/MidiShare.framework "${INSTDIR}"/MidiShare.framework )
+) && ( 
+    cd midishare/libraries/player/macosx 
+    rm -rf build/Deployment/Player.framework
+    xcodebuild -project 'Player.xcodeproj' -target 'Player Universal' -configuration 'Deployment' \
+        && ( sudo rm -rf "${INSTDIR}"/Player.framework \
+             && sudo cp -a build/Deployment/Player.framework "${INSTDIR}"/Player.framework )
 )
 
-open "${INSTDIR}"
-open /Library/Frameworks
-echo "Install the MidiShare.framework and the Player.framework to /Library/Frameworks"

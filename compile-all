@@ -2,7 +2,4 @@
 "$(dirname "$0")/compile-ffigen4"
 "$(dirname "$0")/compile-portaudio"
 "$(dirname "$0")/compile-midishare"
-cd "$(dirname "$0")/../patchwork/"
-cd "$(pwd -P)"
-make -C src/macosx icons headers interfaces 
-make application
+"$(dirname "$0")/compile-patchwork"
