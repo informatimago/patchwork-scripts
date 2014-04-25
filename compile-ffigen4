@@ -8,3 +8,4 @@ cd "$(dirname "$0")/../ffigen4"
 cd "$(pwd -P)"
 make clean
 CC=/opt/local/bin/gcc-apple-4.2 make 
+sudo tar -C /usr/local -zxf ffigen-apple-gcc-5646-intel-2014-04-25-02-06-38.tar.gz
