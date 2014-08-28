@@ -6,3 +6,4 @@ svn co https://subversion.assembla.com/svn/portaudio/portaudio/trunk portaudio
 git clone git@gitorious.org:patchwork/midishare.git
 git clone git@gitorious.org:patchwork/mclgui.git
 git clone git@gitorious.org:patchwork/patchwork.git
+git clone git@gitorious.org:abnotation/midi.git
