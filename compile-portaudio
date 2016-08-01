@@ -1,8 +1,11 @@
 #!/bin/bash
+set -eu
 
-cd "$(dirname "$0")/../portaudio/trunk"
+cd "$(dirname "$0")/../portaudio"
 cd "$(pwd -P)"
 ./configure --prefix=/usr/local
 make clean
 make
+printf '# Installing portaudio.\n'
 sudo make install
+printf '# Installation completed.\n'

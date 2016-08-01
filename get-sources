@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eu
 cd "$(dirname "$0")/../"
 cd "$(pwd -P)"
 svn co http://svn.clozure.com/publicsvn/ffigen4/branches/ffigen-apple-gcc-5646/ffigen4

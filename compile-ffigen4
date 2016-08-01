@@ -1,11 +1,18 @@
 #!/bin/bash
+set -eu
 
 # We need to use gcc, not clang to compile ffigen4 (which includes a gcc).
 
 # sudo port install apple-gcc42
-
+CC=/opt/local/bin/gcc-apple-4.2
+if [ ! -x "$CC" ] ; then
+    printf '# We need to install apple-gcc42.\n'
+    sudo port install apple-gcc42
+fi
 cd "$(dirname "$0")/../ffigen4"
 cd "$(pwd -P)"
 make clean
-CC=/opt/local/bin/gcc-apple-4.2 make 
-sudo tar -C /usr/local -zxf ffigen-apple-gcc-5646-intel-2014-04-25-02-06-38.tar.gz
+SHELL=/bin/bash CC="${CC}" make
+printf '# Installing compiled ffigen.\n'
+sudo tar -C /usr/local -zxvf  "$(ls -1 ffigen-apple-gcc-5646-intel-*-*-*-*-*-*.tar.gz|tail -1)"
+printf '# ffigen installation completed.\n'
