@@ -2,9 +2,9 @@
 set -eu
 cd "$(dirname "$0")/../"
 cd "$(pwd -P)"
-svn co http://svn.clozure.com/publicsvn/ffigen4/branches/ffigen-apple-gcc-5646/ffigen4
-svn co https://subversion.assembla.com/svn/portaudio/portaudio/trunk portaudio
-git clone git@gitorious.org:patchwork/midishare.git
-git clone git@gitorious.org:patchwork/mclgui.git
-git clone git@gitorious.org:patchwork/patchwork.git
-git clone git@gitorious.org:abnotation/midi.git
+[ -d ffigen4   ] || svn co http://svn.clozure.com/publicsvn/ffigen4/branches/ffigen-apple-gcc-5646/ffigen4
+[ -d portaudio ] || svn co https://subversion.assembla.com/svn/portaudio/portaudio/trunk portaudio
+[ -d midi      ] || git clone git@gitlab.com:abnotation/midi.git
+[ -d midishare ] || git clone git@gitlab.com:patchwork/midishare.git
+[ -d mclgui    ] || git clone git@gitlab.com:patchwork/mclgui.git
+[ -d patchwork ] || git clone git@gitlab.com:patchwork/patchwork.git
