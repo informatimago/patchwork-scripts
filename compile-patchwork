@@ -3,5 +3,5 @@ set -eu
 
 cd "$(dirname "$0")/../patchwork/"
 cd "$(pwd -P)"
-make -C src/macosx icons interfaces 
+make -C src/macosx icons interfaces
 make application
