@@ -10,7 +10,7 @@ cd "$(pwd -P)"
 (
     cd midishare/src/macosx-mono
     rm -rf build/Deployment/MidiShare.framework
-    xcodebuild -project 'midishare.xcodeproj'  -target 'midishare' -configuration 'Deployment'
+    xcodebuild -project 'midishare.xcodeproj'  -target 'midishare' -configuration 'Deployment' -sdk macosx10.12
     printf '# Installing the MidiShare framework.\n'
     sudo rm -rf "${INSTDIR}"/MidiShare.framework
     sudo cp -a build/Deployment/MidiShare.framework "${INSTDIR}"/MidiShare.framework
@@ -20,7 +20,7 @@ cd "$(pwd -P)"
 (
     cd midishare/libraries/player/macosx
     rm -rf build/Deployment/Player.framework
-    xcodebuild -project 'Player.xcodeproj' -target 'Player Universal' -configuration 'Deployment'
+    xcodebuild -project 'Player.xcodeproj' -target 'Player Universal' -configuration 'Deployment' -sdk macosx10.12
     printf '# Installing the Player framework.\n'
     sudo rm -rf "${INSTDIR}"/Player.framework
     sudo cp -a build/Deployment/Player.framework "${INSTDIR}"/Player.framework
