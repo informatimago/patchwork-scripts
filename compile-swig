@@ -1,0 +1,14 @@
+#!/bin/bash
+set -eu
+cd "$(dirname "$0")/../swig-3.0.12"
+cd "$(pwd -P)"
+pwd -P
+PREFIX="$(cd ../../opt && pwd -P)"
+export SHELL=/bin/bash
+export CC="gcc"
+# ./autogen.sh
+./configure --prefix="${PREFIX}"
+make
+printf '# Installing compiled swig.\n'
+make install
+printf '# swig installation completed.\n'

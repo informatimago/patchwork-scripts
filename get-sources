@@ -2,8 +2,23 @@
 set -eu
 cd "$(dirname "$0")/../"
 cd "$(pwd -P)"
+
+# ---
+# We cannot get swig from svn since then it needs yodl which needs…
+# git clone https://github.com/fbb-git/yodl.git
+# svn co https://svn.code.sf.net/p/swig/code/trunk swig
+
+# We cannot download the swig tarball from sourceforget with wget unless some certificate is installed, so for now, it'll have to be downloaded manually.
+# wget 'https://downloads.sourceforge.net/project/swig/swig/swig-3.0.12/swig-3.0.12.tar.gz?r=http%3A%2F%2Fwww.swig.org%2Fdownload.html&ts=1499246981&use_mirror=kent'
+rm -rf swig-3.0.12
+tar zxf swig-3.0.12.tar.gz
+# ---
+
+
 svn co http://svn.clozure.com/publicsvn/ffigen4/branches/ffigen-apple-gcc-5646/ffigen4
 svn co https://subversion.assembla.com/svn/portaudio/portaudio/trunk portaudio
+
+
 git clone git@gitorious.org:patchwork/midishare.git
 git clone git@gitorious.org:patchwork/mclgui.git
 git clone git@gitorious.org:patchwork/patchwork.git
