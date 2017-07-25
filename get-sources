@@ -8,8 +8,8 @@ cd "$(pwd -P)"
 # git clone https://github.com/fbb-git/yodl.git
 # svn co https://svn.code.sf.net/p/swig/code/trunk swig
 
-# We cannot download the swig tarball from sourceforget with wget unless some certificate is installed, so for now, it'll have to be downloaded manually.
-# wget 'https://downloads.sourceforge.net/project/swig/swig/swig-3.0.12/swig-3.0.12.tar.gz?r=http%3A%2F%2Fwww.swig.org%2Fdownload.html&ts=1499246981&use_mirror=kent'
+swig_url='https://downloads.sourceforge.net/project/swig/swig/swig-3.0.12/swig-3.0.12.tar.gz?r=http%3A%2F%2Fwww.swig.org%2Fdownload.html&ts=1499246981&use_mirror=kent'
+[ -r swig-3.0.12.tar.gz ] || wget  --no-check-certificate "$swig_url" -O swig-3.0.12.tar.gz
 rm -rf swig-3.0.12
 tar zxf swig-3.0.12.tar.gz
 # ---
@@ -19,7 +19,8 @@ tar zxf swig-3.0.12.tar.gz
 [ -d portaudio ] || svn co https://subversion.assembla.com/svn/portaudio/portaudio/trunk portaudio
 
 
-[ -d midishare ] || git clone git@gitorious.org:patchwork/midishare.git
-[ -d mclgui    ] || git clone git@gitorious.org:patchwork/mclgui.git
-[ -d patchwork ] || git clone git@gitorious.org:patchwork/patchwork.git
-[ -d midi      ] || git clone git@gitorious.org:abnotation/midi.git
+[ -d midi      ] || git clone git@framagit.org:abnotation/midi.git
+[ -d CoreMIDI  ] || git clone git@framagit.org:patchwork/CoreMIDI.git
+[ -d midishare ] || git clone git@framagit.org:patchwork/midishare.git
+[ -d mclgui    ] || git clone git@framagit.org:patchwork/mclgui.git
+[ -d patchwork ] || git clone git@framagit.org:patchwork/patchwork.git
