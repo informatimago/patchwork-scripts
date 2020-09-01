@@ -1,9 +1,10 @@
 #!/bin/bash
 set -eu
 
+PREFIX="$(cd ../../opt && pwd -P)"
 cd "$(dirname "$0")/../portaudio"
 cd "$(pwd -P)"
-./configure --prefix=/usr/local
+CC=clang ./configure --prefix="$PREFIX"
 make clean
 make
 printf '# Installing portaudio.\n'
